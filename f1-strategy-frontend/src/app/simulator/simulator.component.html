@@ -1,0 +1,22 @@
+<div style="padding: 1rem;">
+  <h2 style="font-weight: bold; font-size: 1.25rem; margin-bottom: 1rem;">F1 Pit Stop Strategy Simulator</h2>
+  <form>
+    <div *ngFor="let stint of strategy; let i = index" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <select [(ngModel)]="stint.tire" name="tire-{{i}}" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+        <option value="soft">Soft</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <input [(ngModel)]="stint.laps" name="laps-{{i}}" type="number" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" placeholder="Laps">
+      <input [(ngModel)]="stint.fuel" name="fuel-{{i}}" type="number" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;" placeholder="Fuel">
+    </div>
+  </form>
+  <button (click)="runSimulation()" style="margin-top: 1rem; background-color: #2563eb; color: white; padding: 0.5rem 1rem; border-radius: 4px;">Run Simulation</button>
+
+  <div style="margin-top: 2rem;">
+    <canvas baseChart
+      [data]="chartData"
+      chartType="line">
+    </canvas>
+  </div>
+</div>
